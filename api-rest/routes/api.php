@@ -19,6 +19,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //  TAXES
     Route::resource('taxes', TaxController::class);
 
-    //  BRANCHES
+    //  BRACHES
     Route::resource('branches', BranchController::class);
 });
