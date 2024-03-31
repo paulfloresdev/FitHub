@@ -14,9 +14,7 @@ class AuthController extends Controller
     public function create(Request $request)
     {
         $rules = [
-            'name' => 'required|string|min:1|max:48',
-            'lastname' => 'required|string|min:1|max:64',
-            'email' => 'required|string|email|min:1|max:64',
+            'email' => 'required|string|min:1|max:64',
             'password' => 'required|string|min:8',
             'role_id' => 'required|numeric'
         ];
@@ -28,8 +26,6 @@ class AuthController extends Controller
             ], 400);
         }
         $user = User::create([
-            'name' => $request->name,
-            'lastname' => $request->lastname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => $request->role_id
@@ -41,11 +37,10 @@ class AuthController extends Controller
         ], 200);
     }
 
-
     public function login(Request $request)
     {
         $rules = [
-            'email' => 'required|string|email|max:100',
+            'email' => 'required|string|max:100',
             'password' => 'required|string|min:8'
         ];
         $validator = Validator::make($request->input(), $rules);

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class RoleController extends Controller
 {
-
+    //  - Get all records
     public function index()
     {
         $roles = Role::all();
@@ -17,6 +17,7 @@ class RoleController extends Controller
     }
 
 
+    //  - Create a new record
     public function store(Request $request)
     {
         $rules = ['name' => 'required|string|min:1|max:100'];
@@ -36,6 +37,7 @@ class RoleController extends Controller
     }
 
 
+    //  - Get an specific record
     public function show(Role $role)
     {
         return response()->json([
@@ -45,6 +47,7 @@ class RoleController extends Controller
     }
 
 
+    //  - Update an specific record
     public function update(Request $request, Role $role)
     {
         $rules = ['name' => 'required|string|min:1|max:100'];
@@ -63,6 +66,7 @@ class RoleController extends Controller
     }
 
 
+    //  - Delete an specific record
     public function destroy(Role $role)
     {
         $role->delete();
